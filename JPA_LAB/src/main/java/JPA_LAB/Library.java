@@ -1,9 +1,10 @@
 package JPA_LAB;
+import java.util.*;
 import javax.persistence.*;
-import com.Ticket;
-import com.Person;
-import com.Employee;
-import com.Student;
+import com.*;
+
+
+
 
 
 public class Library {
@@ -15,7 +16,14 @@ public class Library {
 		EntityManager entityManager=em.createEntityManager();
 		Ticket t=new Ticket("Delhi","Manali",200.0f,121220);
 		
-		Student s=new Student("Harsh", 400, 3);
+		//Student s=new Student("Harsh", 400, 3);
+		
+		
+		Teacher teacher=new Teacher(101, "adhyapak", "Science");
+		
+		List<Student> studentList=new ArrayList<>();
+		studentList.add(new Student(1, "vidyarthi", 3,teacher));
+		teacher.setStudentList(studentList);
 		
 		Person p=new Person("naam","naam@surname.com",9953270104l);
 		
@@ -24,7 +32,7 @@ public class Library {
 		
 		entityManager.getTransaction().begin();
 		entityManager.persist(t);
-		entityManager.persist(s);
+		entityManager.persist(teacher);
 		entityManager.persist(p);
 		entityManager.persist(e);
 		entityManager.flush();
