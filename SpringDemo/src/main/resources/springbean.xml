@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:p="http://www.springframework.org/schema/p"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd"
+ >
+ 
+  <bean id="human" class="com.Human">
+    <!--<property name="name" value="harsh"/>
+    <property name="salary" value="2000.2f"/>  -->
+    <constructor-arg type="java.lang.String" value="harsh"/>
+    <constructor-arg type="float" value="2000.2f"/>
+    
+    
+  </bean>
+  
+  <bean id="mapExample" class="com.HashmapDemo">
+     <property name="projectList">
+       <map>
+          <entry key="1" value-ref="human1"/>
+          <entry key="2" value-ref="human2"/>
+          <entry key="3" value-ref="human3"/>       
+       </map> 
+       </property>   
+  </bean>
+  
+  
+ <bean id="item1" class="com.Item">
+     <constructor-arg type="java.lang.String" value="ItemOfItemClass1"/>
+     <constructor-arg type="float" value="1300.0f"/> 
+ </bean> 
+
+
+<bean id="item2" class="com.Item">
+     <constructor-arg type="java.lang.String" value="ItemOfItemClass2"/>
+     <constructor-arg type="float" value="1600.0f"/> 
+ </bean>   
+  
+  
+  
+ <bean id="saleList" class="com.Sales"> 
+     <property name="itemList">
+        <list>
+            <ref bean="item1"/>
+            <ref bean="item2"/>
+        </list> 
+     </property>
+ </bean>
+  
+  
+  
+ 
+ <bean id="human1" class="com.Human">
+    <property name="name" value="Stephen"/>
+    <property name="salary" value="2000.0f"/> 
+ </bean>
+ 
+ <bean id="human2" class="com.Human">
+    <property name="name" value="Jack"/>
+    <property name="salary" value="3000.0f"/> 
+ </bean>
+ <bean id="human3" class="com.Human">
+    <property name="name" value="hawkin"/>
+    <property name="salary" value="4000.0f"/> 
+ </bean>
+ 
+  <bean id="department" class="com.Department">
+    <property name="deptName" value="UI/UX"/>
+    <property name="h" ref="human"/> 
+    <property name="humanList">
+       <list>
+          <ref bean="human1"/>
+          <ref bean="human2"/>
+          <ref bean="human3"/>
+       </list>    
+    </property>
+      
+  </bean>
+  
+  <bean id="attendance" class="com.Attendance" factory-method="getDefaultInstance">
+  </bean>
+
+</beans> 
